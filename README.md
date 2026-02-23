@@ -1,16 +1,41 @@
-# React + Vite
+### Return Decision Matrix
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Are you feeling stuck between returning to your home country and continuing your life in your host country?
 
-Currently, two official plugins are available:
+Many professionals reach this crossroads after gaining international exposure - but the decision to stay or return is rarely simple. It’s not just about salary or job title. It involves career trajectory, financial stability, lifestyle preferences, family considerations, emotional well-being, long-term goals, and even identity.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Often, the real challenge isn’t choosing - it’s knowing **what factors actually matter** and how to evaluate them objectively.
 
-## React Compiler
+The **Return Decision Matrix** is a structured mentoring framework designed to help you make this decision with clarity and confidence. It guides you through a multi-dimensional evaluation of your situation, including:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Career growth and opportunity landscape**
+* **Compensation and long-term wealth creation**
+* **Cost of living and financial security**
+* **Professional network strength**
+* **Family priorities and support systems**
+* **Lifestyle alignment and personal fulfillment**
+* **Immigration stability and future certainty**
+* **Emotional readiness and long-term vision**
 
-## Expanding the ESLint configuration
+Instead of relying on impulse, peer pressure, or short-term discomfort, this framework helps you:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* Define your decision criteria clearly
+* Assign weight to what truly matters to you
+* Compare both options objectively
+* Identify trade-offs and hidden risks
+* Arrive at a reasoned, personalized decision
+
+Whether you're considering repatriation for family, career advancement, financial reasons, or simply a change in direction, the Return Decision Matrix provides a systematic approach to evaluate your options holistically.
+
+Make your next move intentional - not reactive.
+
+---
+
+### Local Development Setup
+
+To run this platform locally:
+
+1. Clone the repository
+2. Run `npm install` to install dependencies
+3. Run `npm run dev` to start the local server
+4. Open the application in your browser (usually `http://localhost:5173`)

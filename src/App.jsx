@@ -55,14 +55,23 @@ function App() {
         ) : (
           <div className="glass-panel" style={{ maxWidth: '1200px', margin: '0 auto' }}>
             <div className="text-center mb-8">
-              <h1 className="text-gradient mb-4">Return Decision Matrix</h1>
-              <div className="text-muted mb-4" style={{ fontSize: '1.1rem', lineHeight: '1.6' }}>
-                <p>Are you having difficulty deciding whether to go back to your home country or stay in your host country?</p>
-                <p>Couldn't decide on what parameters should be evaluated to make the right choice?</p>
+              <h1 className="text-gradient mb-6">Return Decision Matrix</h1>
+              <div className="text-muted text-left mx-auto" style={{ fontSize: '1.1rem', lineHeight: '1.8', maxWidth: '900px' }}>
+                <p className="mb-6 text-center" style={{ fontSize: '1.25rem', color: 'var(--primary-color)', fontWeight: 'bold' }}>
+                  Are you feeling stuck between returning to your home country and continuing your life in your host country?
+                </p>
+                <p className="mb-4">
+                  Many professionals reach this crossroads after gaining international exposure - but the decision to stay or return is rarely simple. It's not just about salary or job title. It involves career trajectory, financial stability, lifestyle preferences, family considerations, emotional well-being, long-term goals, and even identity.
+                </p>
+                <p className="mb-4">
+                  Often, the real challenge isn't choosing - it's knowing <strong className="text-primary">what factors actually matter</strong> and how to evaluate them objectively.
+                </p>
+                <div className="p-4 rounded-lg mb-6" style={{ backgroundColor: 'rgba(99, 102, 241, 0.05)', border: '1px solid rgba(99, 102, 241, 0.2)' }}>
+                  <p className="m-0 text-center">
+                    The Return Decision Matrix is a structured mentoring framework designed to help you make this decision with clarity and confidence. It guides you through a multi-dimensional evaluation of your situation.
+                  </p>
+                </div>
               </div>
-              <p className="text-primary font-bold">
-                Use this structured mentoring framework to evaluate your repatriation decision across multiple dimensions.
-              </p>
             </div>
 
             <div className="steps">
