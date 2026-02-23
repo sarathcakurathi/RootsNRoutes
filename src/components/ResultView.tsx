@@ -1,11 +1,17 @@
-import React from 'react';
 import { ArrowLeft, Download, FileSpreadsheet, TrendingUp } from 'lucide-react';
 import * as XLSX from 'xlsx';
 import { CATEGORIES } from '../utils/categories';
+import { PersonalDetailsData, EvaluationData, EvaluationItem } from '../types';
 
-export default function ResultView({ personalDetails, evaluationData, onPrev }) {
+interface ResultViewProps {
+    personalDetails: PersonalDetailsData;
+    evaluationData: EvaluationData;
+    onPrev: () => void;
+}
 
-    const calculateScore = (dataGroup) => {
+export default function ResultView({ personalDetails, evaluationData, onPrev }: ResultViewProps) {
+
+    const calculateScore = (dataGroup: EvaluationItem[]) => {
         let homeScore = 0;
         let currentScore = 0;
         let totalImportance = 0;
@@ -33,8 +39,8 @@ export default function ResultView({ personalDetails, evaluationData, onPrev }) 
     const hasKids = personalDetails.kids && personalDetails.kids.length > 0;
     const hasDependents = personalDetails.dependents && personalDetails.dependents.length > 0;
 
-    const getHighlights = (isHome) => {
-        let all = [...evaluationData.self];
+    const getHighlights = (isHome: boolean) => {
+        let all: EvaluationItem[] = [...evaluationData.self];
         if (hasKids) all = [...all, ...evaluationData.kids];
         if (hasDependents) all = [...all, ...evaluationData.dependents];
 
@@ -56,7 +62,7 @@ export default function ResultView({ personalDetails, evaluationData, onPrev }) 
         const wb = XLSX.utils.book_new();
 
         // 1. Personal Info Sheet
-        const personalInfoData = [
+        const personalInfoData: any[][] = [
             ['Repatriation Mentoring Framework Details'],
             [],
             ['Father\'s Name', personalDetails.fatherName],
@@ -81,12 +87,12 @@ export default function ResultView({ personalDetails, evaluationData, onPrev }) 
         XLSX.utils.book_append_sheet(wb, wsPersonalInfo, 'Personal Details');
 
         // 2. Evaluation Sheet
-        const evaluationRows = [
+        const evaluationRows: any[][] = [
             ['Objectives', 'Description', 'Scores (1-10)', '', '', 'Challenges', 'Mitigation'],
             ['', '', 'Importance', `Probability (${personalDetails.homeStateCountry || 'Home'})`, `Probability (${personalDetails.currentStateCountry || 'Current'})`, '', '']
         ];
 
-        const addSection = (title, data) => {
+        const addSection = (title: string, data: EvaluationItem[]) => {
             if (data.length === 0) return;
             evaluationRows.push([title, '', '', '', '', '', '']); // Section header
             data.forEach(item => {

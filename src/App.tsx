@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Compass, BookOpen } from 'lucide-react';
 import PersonalDetailsForm from './components/PersonalDetailsForm';
 import EvaluationForm from './components/EvaluationForm';
 import ResultView from './components/ResultView';
 import About from './pages/About';
+import { PersonalDetailsData, EvaluationData } from './types';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home'); // 'home', 'about'
-  const [step, setStep] = useState(1); // 1: Personal, 2: Evaluation, 3: Results
+  const [currentPage, setCurrentPage] = useState<'home' | 'about'>('home'); // 'home', 'about'
+  const [step, setStep] = useState<number>(1); // 1: Personal, 2: Evaluation, 3: Results
 
-  const [personalDetails, setPersonalDetails] = useState({
+  const [personalDetails, setPersonalDetails] = useState<PersonalDetailsData>({
     fatherName: '',
     motherName: '',
     kids: [],
@@ -18,7 +19,7 @@ function App() {
     homeStateCountry: '',
   });
 
-  const [evaluationData, setEvaluationData] = useState({
+  const [evaluationData, setEvaluationData] = useState<EvaluationData>({
     self: [],
     kids: [],
     dependents: []
@@ -57,18 +58,35 @@ function App() {
             <div className="text-center mb-8">
               <h1 className="text-gradient mb-6">Return Decision Matrix</h1>
               <div className="text-muted text-left mx-auto" style={{ fontSize: '1.1rem', lineHeight: '1.8', maxWidth: '900px' }}>
-                <p className="mb-6 text-center" style={{ fontSize: '1.25rem', color: 'var(--primary-color)', fontWeight: 'bold' }}>
-                  Are you feeling stuck between returning to your home country and continuing your life in your host country?
-                </p>
                 <p className="mb-4">
-                  Many professionals reach this crossroads after gaining international exposure - but the decision to stay or return is rarely simple. It's not just about salary or job title. It involves career trajectory, financial stability, lifestyle preferences, family considerations, emotional well-being, long-term goals, and even identity.
+                  The Return Decision Matrix is a structured mentoring framework designed to help you make this decision with clarity and confidence. It guides you through a multi-dimensional evaluation of your situation, including:
                 </p>
+                <ul className="mb-6 space-y-2 text-left" style={{ listStyleType: 'disc', paddingLeft: '2rem' }}>
+                  <li>Career growth and opportunity landscape</li>
+                  <li>Compensation and long-term wealth creation</li>
+                  <li>Cost of living and financial security</li>
+                  <li>Professional network strength</li>
+                  <li>Family priorities and support systems</li>
+                  <li>Lifestyle alignment and personal fulfillment</li>
+                  <li>Immigration stability and future certainty</li>
+                  <li>Emotional readiness and long-term vision</li>
+                </ul>
                 <p className="mb-4">
-                  Often, the real challenge isn't choosing - it's knowing <strong className="text-primary">what factors actually matter</strong> and how to evaluate them objectively.
+                  Instead of relying on impulse, peer pressure, or short-term discomfort, this framework helps you:
+                </p>
+                <ul className="mb-6 space-y-2 text-left" style={{ listStyleType: 'disc', paddingLeft: '2rem' }}>
+                  <li>Define your decision criteria clearly</li>
+                  <li>Assign weight to what truly matters to you</li>
+                  <li>Compare both options objectively</li>
+                  <li>Identify trade-offs and hidden risks</li>
+                  <li>Arrive at a reasoned, personalized decision</li>
+                </ul>
+                <p className="mb-6">
+                  Whether you're considering repatriation for family, career advancement, financial reasons, or simply a change in direction, the Return Decision Matrix provides a systematic approach to evaluate your options holistically.
                 </p>
                 <div className="p-4 rounded-lg mb-6" style={{ backgroundColor: 'rgba(99, 102, 241, 0.05)', border: '1px solid rgba(99, 102, 241, 0.2)' }}>
-                  <p className="m-0 text-center">
-                    The Return Decision Matrix is a structured mentoring framework designed to help you make this decision with clarity and confidence. It guides you through a multi-dimensional evaluation of your situation.
+                  <p className="m-0 text-center font-bold text-primary" style={{ fontSize: '1.25rem' }}>
+                    Make your next move intentional — not reactive.
                   </p>
                 </div>
               </div>

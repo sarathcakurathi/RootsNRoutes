@@ -1,8 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { CATEGORIES } from '../utils/categories';
+import { PersonalDetailsData, EvaluationData, EvaluationItem } from '../types';
 
-const EvaluationRow = ({ item, data, onChange, homeLabel, currentLabel }) => {
+interface EvaluationRowProps {
+    item: { id: string; label: string; description: string };
+    data: EvaluationItem[];
+    onChange: (data: EvaluationItem[]) => void;
+    homeLabel: string;
+    currentLabel: string;
+}
+
+const EvaluationRow = ({ item, data, onChange, homeLabel, currentLabel }: EvaluationRowProps) => {
     const rowData = data.find(d => d.id === item.id) || {
         id: item.id,
         label: item.label,
@@ -13,7 +22,7 @@ const EvaluationRow = ({ item, data, onChange, homeLabel, currentLabel }) => {
         mitigation: ''
     };
 
-    const updateField = (field, value) => {
+    const updateField = (field: keyof EvaluationItem, value: string | number) => {
         const newData = data.filter(d => d.id !== item.id);
         onChange([...newData, { ...rowData, [field]: value }]);
     };
@@ -65,7 +74,7 @@ const EvaluationRow = ({ item, data, onChange, homeLabel, currentLabel }) => {
                         <textarea
                             className="form-textarea text-sm"
                             style={{ padding: '0.5rem', minHeight: '40px', flex: 1 }}
-                            rows="1"
+                            rows={1}
                             value={rowData.challenges}
                             onChange={(e) => updateField('challenges', e.target.value)}
                             placeholder={`Challenges...`}
@@ -73,7 +82,7 @@ const EvaluationRow = ({ item, data, onChange, homeLabel, currentLabel }) => {
                         <textarea
                             className="form-textarea text-sm"
                             style={{ padding: '0.5rem', minHeight: '40px', flex: 1 }}
-                            rows="1"
+                            rows={1}
                             value={rowData.mitigation}
                             onChange={(e) => updateField('mitigation', e.target.value)}
                             placeholder="Mitigation Plan..."
@@ -86,8 +95,16 @@ const EvaluationRow = ({ item, data, onChange, homeLabel, currentLabel }) => {
 };
 
 
-export default function EvaluationForm({ personalDetails, data, onChange, onNext, onPrev }) {
-    const [activeTab, setActiveTab] = useState('self'); // 'self', 'kids', 'dependents'
+interface EvaluationFormProps {
+    personalDetails: PersonalDetailsData;
+    data: EvaluationData;
+    onChange: (data: EvaluationData) => void;
+    onNext: () => void;
+    onPrev: () => void;
+}
+
+export default function EvaluationForm({ personalDetails, data, onChange, onNext, onPrev }: EvaluationFormProps) {
+    const [activeTab, setActiveTab] = useState<'self' | 'kids' | 'dependents'>('self'); // 'self', 'kids', 'dependents'
 
     // Initialize empty data if needed
     useEffect(() => {
@@ -116,7 +133,7 @@ export default function EvaluationForm({ personalDetails, data, onChange, onNext
     const homeLabel = personalDetails.homeStateCountry || 'Home Country';
     const currentLabel = personalDetails.currentStateCountry || 'Current Country';
 
-    const handleDataChange = (category, newData) => {
+    const handleDataChange = (category: keyof EvaluationData, newData: EvaluationItem[]) => {
         onChange({ ...data, [category]: newData });
     };
 

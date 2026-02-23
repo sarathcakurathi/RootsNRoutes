@@ -1,8 +1,15 @@
-import React from 'react';
+import { ChangeEvent, FormEvent } from 'react';
 import { Plus, Trash2, ArrowRight } from 'lucide-react';
+import { PersonalDetailsData } from '../types';
 
-export default function PersonalDetailsForm({ data, onChange, onNext }) {
-    const handleChange = (e) => {
+interface PersonalDetailsFormProps {
+    data: PersonalDetailsData;
+    onChange: (data: PersonalDetailsData) => void;
+    onNext: () => void;
+}
+
+export default function PersonalDetailsForm({ data, onChange, onNext }: PersonalDetailsFormProps) {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         onChange({ ...data, [name]: value });
     };
@@ -11,15 +18,15 @@ export default function PersonalDetailsForm({ data, onChange, onNext }) {
         onChange({ ...data, kids: [...data.kids, { name: '', age: '' }] });
     };
 
-    const removeKid = (index) => {
+    const removeKid = (index: number) => {
         const newKids = [...data.kids];
         newKids.splice(index, 1);
         onChange({ ...data, kids: newKids });
     };
 
-    const updateKid = (index, field, value) => {
+    const updateKid = (index: number, field: keyof PersonalDetailsData['kids'][0], value: string) => {
         const newKids = [...data.kids];
-        newKids[index][field] = value;
+        newKids[index] = { ...newKids[index], [field]: value };
         onChange({ ...data, kids: newKids });
     };
 
@@ -27,19 +34,19 @@ export default function PersonalDetailsForm({ data, onChange, onNext }) {
         onChange({ ...data, dependents: [...data.dependents, { name: '', relation: '' }] });
     };
 
-    const removeDependent = (index) => {
+    const removeDependent = (index: number) => {
         const newDependents = [...data.dependents];
         newDependents.splice(index, 1);
         onChange({ ...data, dependents: newDependents });
     };
 
-    const updateDependent = (index, field, value) => {
+    const updateDependent = (index: number, field: keyof PersonalDetailsData['dependents'][0], value: string) => {
         const newDependents = [...data.dependents];
-        newDependents[index][field] = value;
+        newDependents[index] = { ...newDependents[index], [field]: value };
         onChange({ ...data, dependents: newDependents });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         onNext();
     };
