@@ -25,26 +25,12 @@ function App() {
     dependents: []
   });
 
-  const validateStep1 = () => {
-    if (!personalDetails.fatherName.trim()) return false;
-    if (!personalDetails.currentStateCountry.trim()) return false;
-    if (!personalDetails.homeStateCountry.trim()) return false;
-
-    for (const kid of personalDetails.kids) {
-      if (!kid.name.trim()) return false;
-    }
-    for (const dep of personalDetails.dependents) {
-      if (!dep.name.trim() || !dep.relation.trim()) return false;
-    }
-    return true;
-  };
-
   const handleStepClick = (newStep: number) => {
-    if (newStep > 1 && !validateStep1()) {
-      alert("Please complete all required fields in the Details section (Your Name, Current and Home Locations, and any added family members) before proceeding.");
-      setStep(1);
-      window.scrollTo(0, 0);
-      return;
+    if (step === 1 && newStep > 1) {
+      const form = document.getElementById('personal-details-form') as HTMLFormElement;
+      if (form && !form.reportValidity()) {
+        return;
+      }
     }
     setStep(newStep);
     window.scrollTo(0, 0);

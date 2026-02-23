@@ -52,7 +52,7 @@ export default function PersonalDetailsForm({ data, onChange, onNext }: Personal
     };
 
     return (
-        <form onSubmit={handleSubmit} className="flex-col gap-6">
+        <form id="personal-details-form" onSubmit={handleSubmit} className="flex-col gap-6">
             <div className="grid grid-cols-2 md:grid-cols-1 gap-4 mb-6">
                 <div className="form-group">
                     <label className="form-label">Your Name</label>
