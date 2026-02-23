@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { CATEGORIES } from '../utils/categories';
 import { PersonalDetailsData, EvaluationData, EvaluationItem } from '../types';
@@ -69,7 +69,7 @@ const EvaluationRow = ({ item, data, onChange, homeLabel, currentLabel }: Evalua
                 </td>
             </tr>
             <tr style={{ borderBottom: '1px solid var(--surface-border)' }}>
-                <td colSpan="4" style={{ padding: '0 1rem 1rem 1rem' }}>
+                <td colSpan={4} style={{ padding: '0 1rem 1rem 1rem' }}>
                     <div className="flex gap-4">
                         <textarea
                             className="form-textarea text-sm"
@@ -142,31 +142,41 @@ export default function EvaluationForm({ personalDetails, data, onChange, onNext
 
     return (
         <div>
-            <div className="flex gap-4 mb-6" style={{ borderBottom: '1px solid var(--surface-border)', paddingBottom: '1rem' }}>
-                <button
-                    className={`btn ${activeTab === 'self' ? 'btn-primary' : 'btn-secondary'}`}
-                    onClick={() => setActiveTab('self')}
-                >
-                    Self ({personalDetails.fatherName || 'You'} & {personalDetails.motherName || 'Spouse'})
-                </button>
-
-                {hasKids && (
+            <div className="flex justify-between items-center gap-4 mb-6" style={{ borderBottom: '1px solid var(--surface-border)', paddingBottom: '1rem' }}>
+                <div className="flex gap-4">
                     <button
-                        className={`btn ${activeTab === 'kids' ? 'btn-primary' : 'btn-secondary'}`}
-                        onClick={() => setActiveTab('kids')}
+                        className={`btn ${activeTab === 'self' ? 'btn-primary' : 'btn-secondary'}`}
+                        onClick={() => setActiveTab('self')}
                     >
-                        Kids ({personalDetails.kids.map(k => k.name).join(', ')})
+                        Self ({personalDetails.fatherName || 'You'} & {personalDetails.motherName || 'Spouse'})
                     </button>
-                )}
 
-                {hasDependents && (
-                    <button
-                        className={`btn ${activeTab === 'dependents' ? 'btn-primary' : 'btn-secondary'}`}
-                        onClick={() => setActiveTab('dependents')}
-                    >
-                        Dependents ({personalDetails.dependents.map(d => d.name).join(', ')})
+                    {hasKids && (
+                        <button
+                            className={`btn ${activeTab === 'kids' ? 'btn-primary' : 'btn-secondary'}`}
+                            onClick={() => setActiveTab('kids')}
+                        >
+                            Kids ({personalDetails.kids.map(k => k.name).join(', ')})
+                        </button>
+                    )}
+
+                    {hasDependents && (
+                        <button
+                            className={`btn ${activeTab === 'dependents' ? 'btn-primary' : 'btn-secondary'}`}
+                            onClick={() => setActiveTab('dependents')}
+                        >
+                            Dependents ({personalDetails.dependents.map(d => d.name).join(', ')})
+                        </button>
+                    )}
+                </div>
+                <div className="flex gap-4">
+                    <button type="button" onClick={onPrev} className="btn btn-secondary text-sm" style={{ padding: '0.5rem 1rem' }}>
+                        <ArrowLeft size={16} /> Back
                     </button>
-                )}
+                    <button type="button" onClick={onNext} className="btn btn-primary text-sm" style={{ padding: '0.5rem 1rem' }}>
+                        View Results <CheckCircle2 size={16} />
+                    </button>
+                </div>
             </div>
 
             <div className="glass-panel overflow-x-auto mb-8" style={{ padding: 0 }}>
@@ -180,37 +190,70 @@ export default function EvaluationForm({ personalDetails, data, onChange, onNext
                         </tr>
                     </thead>
                     <tbody>
-                        {activeTab === 'self' && CATEGORIES.self.map(item => (
-                            <EvaluationRow
-                                key={item.id}
-                                item={item}
-                                data={data.self}
-                                onChange={(newData) => handleDataChange('self', newData)}
-                                homeLabel={homeLabel}
-                                currentLabel={currentLabel}
-                            />
+                        {activeTab === 'self' && Object.entries(CATEGORIES.self.reduce((acc, item) => {
+                            if (!acc[item.group]) acc[item.group] = [];
+                            acc[item.group].push(item);
+                            return acc;
+                        }, {} as Record<string, typeof CATEGORIES.self>)).map(([group, items]) => (
+                            <React.Fragment key={group}>
+                                <tr style={{ backgroundColor: 'rgba(99, 102, 241, 0.05)' }}>
+                                    <td colSpan={4} style={{ padding: '0.75rem 1rem', fontWeight: 600, color: 'var(--primary-color)' }}>{group} Parameters</td>
+                                </tr>
+                                {items.map(item => (
+                                    <EvaluationRow
+                                        key={item.id}
+                                        item={item}
+                                        data={data.self}
+                                        onChange={(newData) => handleDataChange('self', newData)}
+                                        homeLabel={homeLabel}
+                                        currentLabel={currentLabel}
+                                    />
+                                ))}
+                            </React.Fragment>
                         ))}
 
-                        {activeTab === 'kids' && CATEGORIES.kids.map(item => (
-                            <EvaluationRow
-                                key={item.id}
-                                item={item}
-                                data={data.kids}
-                                onChange={(newData) => handleDataChange('kids', newData)}
-                                homeLabel={homeLabel}
-                                currentLabel={currentLabel}
-                            />
+                        {activeTab === 'kids' && Object.entries(CATEGORIES.kids.reduce((acc, item) => {
+                            if (!acc[item.group]) acc[item.group] = [];
+                            acc[item.group].push(item);
+                            return acc;
+                        }, {} as Record<string, typeof CATEGORIES.kids>)).map(([group, items]) => (
+                            <React.Fragment key={group}>
+                                <tr style={{ backgroundColor: 'rgba(99, 102, 241, 0.05)' }}>
+                                    <td colSpan={4} style={{ padding: '0.75rem 1rem', fontWeight: 600, color: 'var(--primary-color)' }}>{group} Parameters</td>
+                                </tr>
+                                {items.map(item => (
+                                    <EvaluationRow
+                                        key={item.id}
+                                        item={item}
+                                        data={data.kids}
+                                        onChange={(newData) => handleDataChange('kids', newData)}
+                                        homeLabel={homeLabel}
+                                        currentLabel={currentLabel}
+                                    />
+                                ))}
+                            </React.Fragment>
                         ))}
 
-                        {activeTab === 'dependents' && CATEGORIES.dependents.map(item => (
-                            <EvaluationRow
-                                key={item.id}
-                                item={item}
-                                data={data.dependents}
-                                onChange={(newData) => handleDataChange('dependents', newData)}
-                                homeLabel={homeLabel}
-                                currentLabel={currentLabel}
-                            />
+                        {activeTab === 'dependents' && Object.entries(CATEGORIES.dependents.reduce((acc, item) => {
+                            if (!acc[item.group]) acc[item.group] = [];
+                            acc[item.group].push(item);
+                            return acc;
+                        }, {} as Record<string, typeof CATEGORIES.dependents>)).map(([group, items]) => (
+                            <React.Fragment key={group}>
+                                <tr style={{ backgroundColor: 'rgba(99, 102, 241, 0.05)' }}>
+                                    <td colSpan={4} style={{ padding: '0.75rem 1rem', fontWeight: 600, color: 'var(--primary-color)' }}>{group} Parameters</td>
+                                </tr>
+                                {items.map(item => (
+                                    <EvaluationRow
+                                        key={item.id}
+                                        item={item}
+                                        data={data.dependents}
+                                        onChange={(newData) => handleDataChange('dependents', newData)}
+                                        homeLabel={homeLabel}
+                                        currentLabel={currentLabel}
+                                    />
+                                ))}
+                            </React.Fragment>
                         ))}
                     </tbody>
                 </table>

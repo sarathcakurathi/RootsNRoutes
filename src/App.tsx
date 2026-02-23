@@ -56,71 +56,67 @@ function App() {
         ) : (
           <div className="glass-panel" style={{ maxWidth: '1200px', margin: '0 auto' }}>
             <div className="text-center mb-8">
-              <h1 className="text-gradient mb-6">Return Decision Matrix</h1>
-              <div className="text-muted text-left mx-auto" style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
-                <p className="mb-4">
-                  Are you feeling stuck between returning to your home country and continuing your life in your host country?
-                </p>
-                <p className="mb-4">
-                  Many professionals reach this crossroads after gaining international exposure -
-                  \
-
-
-
-
-
-                  but the decision to stay or return is rarely simple. It’s not just about salary or job title. It involves career trajectory, financial stability, lifestyle preferences, family considerations, emotional well-being, long-term goals, and even identity.
-                </p>
-                <p className="mb-4">
-                  Often, the real challenge isn’t choosing - it’s knowing what factors actually matter and how to evaluate them objectively.
-                </p>
-                <p className="mb-6">
-                  The Return Decision Matrix is a structured mentoring framework designed to help you make this decision with clarity and confidence. It guides you through a multi-dimensional evaluation of your situation, including:
-                </p>
-
-                <div className="flex flex-col md:flex-row relative gap-6 mb-10 mt-8">
-                  {/* Card 1 */}
-                  <div className="flex-1 p-6 rounded-xl border border-gray-200 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_4px_25px_rgba(0,0,0,0.06)] transition-shadow relative z-0">
-                    <ul className="space-y-3 m-0 text-left text-gray-700" style={{ listStyleType: 'none', padding: 0 }}>
-                      <li className="flex items-start gap-2"><span className="text-primary mt-1">•</span> Career growth and opportunity landscape</li>
-                      <li className="flex items-start gap-2"><span className="text-primary mt-1">•</span> Compensation and long-term wealth creation</li>
-                      <li className="flex items-start gap-2"><span className="text-primary mt-1">•</span> Cost of living and financial security</li>
-                      <li className="flex items-start gap-2"><span className="text-primary mt-1">•</span> Professional network strength</li>
-                      <li className="flex items-start gap-2"><span className="text-primary mt-1">•</span> Family priorities and support systems</li>
-                      <li className="flex items-start gap-2"><span className="text-primary mt-1">•</span> Lifestyle alignment and personal fulfillment</li>
-                      <li className="flex items-start gap-2"><span className="text-primary mt-1">•</span> Immigration stability and future certainty</li>
-                      <li className="flex items-start gap-2"><span className="text-primary mt-1">•</span> Emotional readiness and long-term vision</li>
-                    </ul>
-                  </div>
-
-                  {/* Arrow Iterator */}
-                  <div className="hidden md:flex items-center justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-indigo-500 rounded-full text-white shadow-lg border-4 border-[var(--background-color)]" style={{ borderColor: 'var(--surface-color, white)' }}>
-                    <ArrowRight size={24} />
-                  </div>
-
-                  {/* Card 2 */}
-                  <div className="flex-1 flex flex-col justify-center p-6 rounded-xl border border-indigo-100 bg-indigo-50/70 shadow-[0_4px_20px_rgba(79,70,229,0.05)] hover:shadow-[0_4px_25px_rgba(79,70,229,0.1)] transition-shadow relative z-0">
-                    <p className="mb-4 font-semibold text-indigo-900 text-left">
-                      Instead of relying on impulse, peer pressure, or short-term discomfort, this framework helps you:
-                    </p>
-                    <ul className="space-y-3 m-0 text-left text-indigo-800" style={{ listStyleType: 'none', padding: 0 }}>
-                      <li className="flex items-start gap-2"><span className="text-secondary mt-1 font-bold">✓</span> Define your decision criteria clearly</li>
-                      <li className="flex items-start gap-2"><span className="text-secondary mt-1 font-bold">✓</span> Assign weight to what truly matters to you</li>
-                      <li className="flex items-start gap-2"><span className="text-secondary mt-1 font-bold">✓</span> Compare both options objectively</li>
-                      <li className="flex items-start gap-2"><span className="text-secondary mt-1 font-bold">✓</span> Identify trade-offs and hidden risks</li>
-                      <li className="flex items-start gap-2"><span className="text-secondary mt-1 font-bold">✓</span> Arrive at a reasoned, personalized decision</li>
-                    </ul>
-                  </div>
-                </div>
-                <p className="mb-6">
-                </p>
-                <div className="p-4 rounded-lg mb-6" style={{ backgroundColor: 'rgba(99, 102, 241, 0.05)', border: '1px solid rgba(99, 102, 241, 0.2)' }}>
-                  <p className="m-0 text-center font-bold text-primary" style={{ fontSize: '1.25rem' }}>
-                    Whether you're considering repatriation for family, career advancement, financial reasons, or simply a change in direction, the Return Decision Matrix provides a systematic approach to evaluate your options holistically. <br />
-                    Make your next move intentional - not reactive.
+              <h1 className="text-gradient mb-6">The Homecoming Compass</h1>
+              {step === 1 && (
+                <div className="text-muted text-left mx-auto" style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>
+                  <p className="mb-4">
+                    Are you feeling stuck between returning to your home country and continuing your life in your host country?
                   </p>
+                  <p className="mb-4">
+                    Many professionals reach this crossroads after gaining international exposure -
+                    but the decision to stay or return is rarely simple. It’s not just about salary or job title. It involves career trajectory, financial stability, lifestyle preferences, family considerations, emotional well-being, long-term goals, and even identity.
+                  </p>
+                  <p className="mb-4">
+                    Often, the real challenge isn’t choosing - it’s knowing what factors actually matter and how to evaluate them objectively.
+                  </p>
+                  <p className="mb-6">
+                    The The Homecoming Compass is a structured mentoring framework designed to help you make this decision with clarity and confidence. It guides you through a multi-dimensional evaluation of your situation, including:
+                  </p>
+
+                  <div className="features-grid">
+                    {/* Card 1 */}
+                    <div className="glass-panel criteria-card" style={{ borderTop: '4px solid var(--primary-color)' }}>
+                      <ul className="m-0 text-left text-muted" style={{ listStyleType: 'none', padding: 0 }}>
+                        <li className="dynamic-list-item" style={{ marginBottom: '0.5rem', padding: '0.75rem' }}><span className="text-primary mt-1">•</span> Career growth and opportunity landscape</li>
+                        <li className="dynamic-list-item" style={{ marginBottom: '0.5rem', padding: '0.75rem' }}><span className="text-primary mt-1">•</span> Compensation and long-term wealth creation</li>
+                        <li className="dynamic-list-item" style={{ marginBottom: '0.5rem', padding: '0.75rem' }}><span className="text-primary mt-1">•</span> Cost of living and financial security</li>
+                        <li className="dynamic-list-item" style={{ marginBottom: '0.5rem', padding: '0.75rem' }}><span className="text-primary mt-1">•</span> Professional network strength</li>
+                        <li className="dynamic-list-item" style={{ marginBottom: '0.5rem', padding: '0.75rem' }}><span className="text-primary mt-1">•</span> Family priorities and support systems</li>
+                        <li className="dynamic-list-item" style={{ marginBottom: '0.5rem', padding: '0.75rem' }}><span className="text-primary mt-1">•</span> Lifestyle alignment and personal fulfillment</li>
+                        <li className="dynamic-list-item" style={{ marginBottom: '0.5rem', padding: '0.75rem' }}><span className="text-primary mt-1">•</span> Immigration stability and future certainty</li>
+                        <li className="dynamic-list-item" style={{ marginBottom: '0', padding: '0.75rem' }}><span className="text-primary mt-1">•</span> Emotional readiness and long-term vision</li>
+                      </ul>
+                    </div>
+
+                    {/* Arrow Iterator */}
+                    <div className="desktop-arrow">
+                      <ArrowRight size={28} />
+                    </div>
+
+                    {/* Card 2 */}
+                    <div className="glass-panel criteria-card" style={{ borderTop: '4px solid var(--secondary-color)', background: 'rgba(99, 102, 241, 0.03)' }}>
+                      <p className="mb-4 font-bold text-primary text-left">
+                        Instead of relying on impulse, peer pressure, or short-term discomfort, this framework helps you:
+                      </p>
+                      <ul className="m-0 text-left text-muted" style={{ listStyleType: 'none', padding: 0 }}>
+                        <li className="dynamic-list-item" style={{ marginBottom: '0.5rem', padding: '0.75rem' }}><span className="text-secondary mt-1 font-bold">✓</span> Define your decision criteria clearly</li>
+                        <li className="dynamic-list-item" style={{ marginBottom: '0.5rem', padding: '0.75rem' }}><span className="text-secondary mt-1 font-bold">✓</span> Assign weight to what truly matters to you</li>
+                        <li className="dynamic-list-item" style={{ marginBottom: '0.5rem', padding: '0.75rem' }}><span className="text-secondary mt-1 font-bold">✓</span> Compare both options objectively</li>
+                        <li className="dynamic-list-item" style={{ marginBottom: '0.5rem', padding: '0.75rem' }}><span className="text-secondary mt-1 font-bold">✓</span> Identify trade-offs and hidden risks</li>
+                        <li className="dynamic-list-item" style={{ marginBottom: '0', padding: '0.75rem' }}><span className="text-secondary mt-1 font-bold">✓</span> Arrive at a reasoned, personalized decision</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="glass-panel mt-8 mb-6" style={{ borderTop: '4px solid var(--primary-color)', background: 'linear-gradient(to right, rgba(99, 102, 241, 0.03), rgba(236, 72, 153, 0.03))' }}>
+                    <p className="m-0 text-center font-bold text-primary" style={{ fontSize: '1.15rem', lineHeight: '1.6' }}>
+                      <span className="text-gradient" style={{ fontSize: '1.35rem' }}>
+                        Whether you're considering repatriation for family, career advancement, financial reasons, or simply a change in direction, the The Homecoming Compass provides a systematic approach to evaluate your options holistically.<br />
+                        <b>Make your next move intentional - not reactive.</b>
+                      </span>
+                    </p>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
             <div className="steps">

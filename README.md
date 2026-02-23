@@ -1,4 +1,4 @@
-### Return Decision Matrix
+### The Homecoming Compass
 
 Are you feeling stuck between returning to your home country and continuing your life in your host country?
 
@@ -6,7 +6,7 @@ Many professionals reach this crossroads after gaining international exposure - 
 
 Often, the real challenge isn’t choosing - it’s knowing **what factors actually matter** and how to evaluate them objectively.
 
-The **Return Decision Matrix** is a structured mentoring framework designed to help you make this decision with clarity and confidence. It guides you through a multi-dimensional evaluation of your situation, including:
+The **The Homecoming Compass** is a structured mentoring framework designed to help you make this decision with clarity and confidence. It guides you through a multi-dimensional evaluation of your situation, including:
 
 * **Career growth and opportunity landscape**
 * **Compensation and long-term wealth creation**
@@ -25,7 +25,7 @@ Instead of relying on impulse, peer pressure, or short-term discomfort, this fra
 * Identify trade-offs and hidden risks
 * Arrive at a reasoned, personalized decision
 
-Whether you're considering repatriation for family, career advancement, financial reasons, or simply a change in direction, the Return Decision Matrix provides a systematic approach to evaluate your options holistically.
+Whether you're considering repatriation for family, career advancement, financial reasons, or simply a change in direction, the The Homecoming Compass provides a systematic approach to evaluate your options holistically.
 
 Make your next move intentional - not reactive.
 

@@ -436,3 +436,48 @@ nav a:hover,
 nav a.active {
   color: var(--primary-color);
 }
+
+/* Landing Page Grid Features */
+.features-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  margin-top: 2rem;
+  position: relative;
+  align-items: stretch;
+}
+
+.criteria-card {
+  flex: 1;
+  padding: 2rem;
+  /* Override padding if needed */
+}
+
+.desktop-arrow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+  border: 4px solid #f8fafc;
+}
+
+@media (max-width: 900px) {
+  .features-grid {
+    flex-direction: column;
+  }
+
+  .desktop-arrow {
+    display: none;
+  }
+}
