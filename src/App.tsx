@@ -25,14 +25,37 @@ function App() {
     dependents: []
   });
 
-  const handleNextStep = () => {
-    setStep(s => Math.min(s + 1, 3));
+  const validateStep1 = () => {
+    if (!personalDetails.fatherName.trim()) return false;
+    if (!personalDetails.currentStateCountry.trim()) return false;
+    if (!personalDetails.homeStateCountry.trim()) return false;
+
+    for (const kid of personalDetails.kids) {
+      if (!kid.name.trim()) return false;
+    }
+    for (const dep of personalDetails.dependents) {
+      if (!dep.name.trim() || !dep.relation.trim()) return false;
+    }
+    return true;
+  };
+
+  const handleStepClick = (newStep: number) => {
+    if (newStep > 1 && !validateStep1()) {
+      alert("Please complete all required fields in the Details section (Your Name, Current and Home Locations, and any added family members) before proceeding.");
+      setStep(1);
+      window.scrollTo(0, 0);
+      return;
+    }
+    setStep(newStep);
     window.scrollTo(0, 0);
   };
 
+  const handleNextStep = () => {
+    handleStepClick(Math.min(step + 1, 3));
+  };
+
   const handlePrevStep = () => {
-    setStep(s => Math.max(s - 1, 1));
-    window.scrollTo(0, 0);
+    handleStepClick(Math.max(step - 1, 1));
   };
 
   return (
@@ -120,17 +143,29 @@ function App() {
             </div>
 
             <div className="steps">
-              <div className={`step ${step >= 1 ? 'active' : ''} ${step > 1 ? 'completed' : ''}`}>
+              <div
+                className={`step ${step >= 1 ? 'active' : ''} ${step > 1 ? 'completed' : ''}`}
+                onClick={() => handleStepClick(1)}
+                style={{ cursor: 'pointer' }}
+              >
                 <div className="step-number">1</div>
                 <div className="step-label">Details</div>
               </div>
               <div className={`step-line ${step >= 2 ? 'active' : ''}`}></div>
-              <div className={`step ${step >= 2 ? 'active' : ''} ${step > 2 ? 'completed' : ''}`}>
+              <div
+                className={`step ${step >= 2 ? 'active' : ''} ${step > 2 ? 'completed' : ''}`}
+                onClick={() => handleStepClick(2)}
+                style={{ cursor: 'pointer' }}
+              >
                 <div className="step-number">2</div>
                 <div className="step-label">Evaluation</div>
               </div>
               <div className={`step-line ${step >= 3 ? 'active' : ''}`}></div>
-              <div className={`step ${step >= 3 ? 'active' : ''}`}>
+              <div
+                className={`step ${step >= 3 ? 'active' : ''}`}
+                onClick={() => handleStepClick(3)}
+                style={{ cursor: 'pointer' }}
+              >
                 <div className="step-number">3</div>
                 <div className="step-label">Results</div>
               </div>
