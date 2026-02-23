@@ -63,7 +63,7 @@ export default function PersonalDetailsForm({ data, onChange, onNext }: Personal
                         value={data.fatherName}
                         onChange={handleChange}
                         required
-                        placeholder="John Doe"
+                        placeholder=""
                     />
                 </div>
                 <div className="form-group">
@@ -75,7 +75,7 @@ export default function PersonalDetailsForm({ data, onChange, onNext }: Personal
                         value={data.motherName}
                         onChange={handleChange}
                         required
-                        placeholder="Jane Doe"
+                        placeholder=""
                     />
                 </div>
             </div>
