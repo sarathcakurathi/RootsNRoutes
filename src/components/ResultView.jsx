@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowLeft, Download, FileSpreadsheet, TrendingUp } from 'lucide-react';
 import * as XLSX from 'xlsx';
+import { CATEGORIES } from '../utils/categories';
 
 export default function ResultView({ personalDetails, evaluationData, onPrev }) {
 
