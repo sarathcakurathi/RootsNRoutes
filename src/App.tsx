@@ -189,6 +189,9 @@ function App() {
       <footer style={{ textAlign: 'center', padding: '2rem 0', marginTop: '2rem', borderTop: '1px solid var(--surface-border)', color: 'var(--text-muted)', fontSize: '0.875rem' }}>
         <p>© {new Date().getFullYear()} Roots & Routes. An open-source initiative.</p>
         <p>Built to help the global expatriate community make informed life decisions.</p>
+        <div style={{ marginTop: '1.5rem', display: 'flex', justifyContent: 'center', opacity: 0.8 }}>
+          <img src="https://api.visitorbadge.io/api/visitors?path=sarathcakurathi.rootsnroutes&label=Page%20Views&countColor=%236366f1" alt="visitor badge" />
+        </div>
       </footer>
     </>
   );
