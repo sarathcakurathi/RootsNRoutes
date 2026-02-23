@@ -79,7 +79,7 @@ function App() {
                     Often, the real challenge isn’t choosing - it’s knowing what factors actually matter and how to evaluate them objectively.
                   </p>
                   <p className="mb-6">
-                    The The Homecoming Compass is a structured mentoring framework designed to help you make this decision with clarity and confidence. It guides you through a multi-dimensional evaluation of your situation, including:
+                    The Homecoming Compass is a structured mentoring framework designed to help you make this decision with clarity and confidence. It guides you through a multi-dimensional evaluation of your situation, including:
                   </p>
 
                   <div className="features-grid">
@@ -119,7 +119,7 @@ function App() {
                   <div className="glass-panel mt-8 mb-6" style={{ borderTop: '4px solid var(--primary-color)', background: 'linear-gradient(to right, rgba(99, 102, 241, 0.03), rgba(236, 72, 153, 0.03))' }}>
                     <p className="m-0 text-center font-bold text-primary" style={{ fontSize: '1.15rem', lineHeight: '1.6' }}>
                       <span className="text-gradient" style={{ fontSize: '1.35rem' }}>
-                        Whether you're considering repatriation for family, career advancement, financial reasons, or simply a change in direction, the The Homecoming Compass provides a systematic approach to evaluate your options holistically.<br />
+                        Whether you're considering repatriation for family, career advancement, financial reasons, or simply a change in direction, the Homecoming Compass provides a systematic approach to evaluate your options holistically.<br />
                         <b>Make your next move intentional - not reactive.</b>
                       </span>
                     </p>

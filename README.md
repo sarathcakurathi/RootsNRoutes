@@ -25,7 +25,7 @@ Instead of relying on impulse, peer pressure, or short-term discomfort, this fra
 * Identify trade-offs and hidden risks
 * Arrive at a reasoned, personalized decision
 
-Whether you're considering repatriation for family, career advancement, financial reasons, or simply a change in direction, the The Homecoming Compass provides a systematic approach to evaluate your options holistically.
+Whether you're considering repatriation for family, career advancement, financial reasons, or simply a change in direction, the Homecoming Compass provides a systematic approach to evaluate your options holistically.
 
 Make your next move intentional - not reactive.
 
